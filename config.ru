@@ -5,6 +5,11 @@ require 'sinatra'
 
 Dotenv.load
 
+configure :production do
+	require 'rack/ssl'
+	use Rack::SSL
+end
+
 auth_name = ENV.fetch('BASIC_AUTH_NAME')
 auth_password = ENV.fetch('BASIC_AUTH_PASSWORD')
 
